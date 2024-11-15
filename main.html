@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інтернет-магазин</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/1.avif" alt="Логотип" width="100" height="100">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="about.html">Про нас</a></li>
+                <li id="loginLink"></li>
+                <li id="cartLink" style="display: none;"><a href="cart.html">
+                    <img src="img/1.jpg" alt="Корзина" width="30" height="30">
+                </a></li>
+                <li id="logoutLink" style="display: none;"><a href="#" onclick="logout()">Вийти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="product" onclick="openProductPage('Verse 21121')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass1.jpg" alt="Товар 1">
+            <h3>Verse 21121</h3>
+            <p>Ціна: $50.00</p>
+        </div>
+
+        <div class="product" onclick="openProductPage('RAY-BAN RB 3547 001')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass2.jpg" alt="Товар 2">
+            <h3>RAY-BAN RB 3547 001</h3>
+            <p>Ціна: $200.00</p>
+        </div>
+        <div class="product" onclick="openProductPage('Ray-Ban RB 3682')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass3.jpg" alt="Товар 3">
+            <h3>Ray-Ban RB 3682</h3>
+            <p>Ціна: $130.00</p>
+        </div>
+        <div class="product" onclick="openProductPage('RB 8125M 9165')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass4.jpg" alt="Товар 4">
+            <h3>RB 8125M 9165</h3>
+            <p>Ціна: $520.00</p>
+        </div>
+        <div class="product" onclick="openProductPage('RAY-BAN 9565S 212/80 DARK BLUE')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass5.jpg" alt="Товар 5">
+            <h3>RAY-BAN 9565S 212/80 DARK BLUE</h3>
+            <p>Ціна: $100.00</p>
+        </div>
+        <div class="product" onclick="openProductPage('Gucci GG1221S')" onmouseover="highlightProduct(this)" onmouseout="unhighlightProduct(this)">
+            <img src="img/glass6.jpg" alt="Товар 6">
+            <h3>RAY-BAN 9565S 212/80 DARK BLUE</h3>
+            <p>Ціна: $400.00</p>
+        </div>
+    </main>
+<footer>
+    <p>&copy; Архіпов Олексій 2023</p>
+</footer>
+</body>
+</html>

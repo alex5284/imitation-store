@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="stylesheet" href="cart.css">
+    <script src="cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Ваш кошик</h1>
+    </header>
+    <nav>
+        <a href="main.html">Каталог</a>
+    </nav>
+    <main>
+        <div id="cartContents">
+            <table class="cartTable">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Кількість</th>
+                        <th>Ціна</th>
+                        <th>Сума</th> <!-- New column for total sum -->
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="cartTableBody">
+                </tbody>
+            </table>
+        </div>
+        <div id="totalSum">Total: $0.00</div> <!-- Display total sum -->
+        <button onclick="placeOrder()">Замовити</button>
+    </main>
+
+    <script>
+        
+    </script>
+</body>
+</html>

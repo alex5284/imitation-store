@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару</title>
+    <link rel="stylesheet" href="product_page.css">
+</head>
+<body>
+    <header>
+        <h1>Verse 21121</h1>
+    </header>
+    <nav>
+        <a href="E:\Е\Веб\Магазин\main.html">Каталог</a>
+    </nav>
+    <main>
+        <div id="productDetails">
+            <img id="productImage" src="E:\Е\Веб\Магазин\img\glass1.jpg" alt="Товар">
+            <p>Verse – це бренд окулярів, який створює модні та стильні окуляри для різних вікових груп. Вони виробляють широкий асортимент окулярів різних стилів та кольорів, дозволяючи вибрати відповідну модель для будь-якого образу. Окуляри Verse виготовляються з якісних матеріалів, включаючи метал, титан, ацетат та пластик, що забезпечують міцність та довговічність окулярів. Компанія також пропонує різні типи лінз, такі як лінзи із захистом від сонячних променів та синього світла, а також з різними покриттями для зменшення відображення та покращення якості зору. В цілому, бренд Verse – це відмінний вибір для тих, хто шукає модні та стильні окуляри, які поєднують у собі високу якість та оригінальний дизайн.</p>
+            <p>Ціна: $50.00</p>
+            
+            <label for="quantity">Кількість:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+
+            <button onclick="addToCart()">Додати у кошик</button>
+            <button onclick="showCart()">Показати корзину</button>
+        </div>
+    </main>
+
+    <script>
+        function addToCart() {
+            const productId = 'Verse 21121';
+            const username = localStorage.getItem('userLogin');
+
+            if (!username) {
+                alert('Для додавання товару у кошик авторизуйтеся.');
+                return;
+            }
+
+            const quantity = document.getElementById('quantity').value;
+            const cartItem = {
+                productId,
+                username,
+                quantity: parseInt(quantity),
+                price: 50.00,
+            };
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            console.log(`Додано ${quantity} одиниць товару до корзини.`);
+        }
+
+        function showCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length > 0) {
+                alert('Товари в корзині:\n' + cart.map(item => `${item.productId}: ${item.quantity} шт. * $${item.price.toFixed(2)}`).join('\n'));
+            } else {
+                alert('Корзина порожня.');
+            }
+        }
+    </script>
+</body>
+</html>

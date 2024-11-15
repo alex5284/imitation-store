@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару</title>
+    <link rel="stylesheet" href="product_page.css">
+</head>
+<body>
+    <header>
+        <h1>RB 8125M 9165</h1>
+    </header>
+    <nav>
+        <a href="E:\Е\Веб\Магазин\main.html">Каталог</a>
+    </nav>
+    <main>
+        <div id="productDetails">
+            <img id="productImage" src="E:\Е\Веб\Магазин\img\glass4.jpg" alt="Товар">
+            <p>Вага окулярів: 18 грам<br>
+                ✓ Цікавий факт: у цих окулярів дуже рідкісні лінзи та іншої моделі окулярів з такими лінзами немає в наявності (а може бути і взагалі немає)<br>
+                ✓ Поляризационные линзы убирают отражающийся свет от бликующих предметов — воды, стекла, металла, снега и т.д.<br>
+                ✓ Лінзи з максимальним затемненням зручні для яскравого літнього сонця<br>
+                ✓ Лінзи з мінерального скла менш схильні до подряпин, в той же час вони важчі за полімерні / полікарбонатні і можуть бути розбиті при ударі об твердий предмет<br>
+                ✓ Оправа этой модели очков выполена из титана<br>
+                ✓ Це оригінальні окуляри Ray-Ban, остерігайтеся суттєво нижчих цін, тому що це легко можуть бути підробки</p>
+            <p>Ціна: $520.00</p>
+            
+            <label for="quantity">Кількість:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+
+            <button onclick="addToCart()">Додати у кошик</button>
+            <button onclick="showCart()">Показати корзину</button>
+        </div>
+    </main>
+
+    <script>
+        function addToCart() {
+            const productId = 'RB 8125M 9165';
+            const username = localStorage.getItem('userLogin');
+
+            if (!username) {
+                alert('Для додавання товару у кошик авторизуйтеся.');
+                return;
+            }
+
+            const quantity = document.getElementById('quantity').value;
+            const cartItem = {
+                productId,
+                username,
+                quantity: parseInt(quantity),
+                price: 520.00,
+            };
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            console.log(`Додано ${quantity} одиниць товару до корзини.`);
+        }
+
+        function showCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length > 0) {
+                alert('Товари в корзині:\n' + cart.map(item => `${item.productId}: ${item.quantity} шт. * $${item.price.toFixed(2)}`).join('\n'));
+            } else {
+                alert('Корзина порожня.');
+            }
+        }
+    </script>
+</body>
+</html>

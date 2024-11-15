@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль користувача</title>
+    <link rel="stylesheet" href="profile.css">
+    <script src="profile.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 id="profileTitle">Профіль користувача</h1>
+    </header>
+    <nav>
+        <a href="main.html">Каталог</a>
+    </nav>
+    <main>
+        <form id="changeUserDataForm">
+            <label for="newUsername">Новий логін:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">Новий пароль:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <button type="button" onclick="changeUserData()">Змінити дані</button>
+        </form>
+        <div id="purchaseHistory">
+        </div>
+    </main>
+</body>
+</html>

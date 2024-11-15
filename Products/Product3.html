@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару</title>
+    <link rel="stylesheet" href="product_page.css">
+</head>
+<body>
+    <header>
+        <h1>Ray-Ban RB 3682</h1>
+    </header>
+    <nav>
+        <a href="E:\Е\Веб\Магазин\main.html">Каталог</a>
+    </nav>
+    <main>
+        <div id="productDetails">
+            <img id="productImage" src="E:\Е\Веб\Магазин\img\glass3.jpg" alt="Товар">
+            <p>Сонцезахисні окуляри Рей Бен — це аксесуар для стилю та надійного захисту очей від сонячного ультрафіолету. Модель окулярів RB 3682 з колекції 2022 року має привабливий нейтральний дизайн та підходить і чоловікам, і жінкам. Ці окуляри призначені для комфортного носіння у будь-який сезон: влітку, восени, взимку. Ray-Ban є найвідомішим у світі брендом окулярів, а всі вироби бренду якісні та довговічні. </p>
+            <p>Ці окуляри від сонця мають лінзи з середнім затемненням (2N), що призначені для носіння у помірно сонячну погоду. Рівень захисту від ультрафіолету максимальний, тобто блокується 100% UV-променів. В окулярах RB3682 ви можете не перейматися про захист своїх очей від сонця.</p>
+            <p>Ціна: $130.00</p>
+            
+            <label for="quantity">Кількість:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+
+            <button onclick="addToCart()">Додати у кошик</button>
+            <button onclick="showCart()">Показати корзину</button>
+        </div>
+    </main>
+
+    <script>
+        function addToCart() {
+            const productId = 'Ray-Ban RB 3682';
+            const username = localStorage.getItem('userLogin');
+
+            if (!username) {
+                alert('Для додавання товару у кошик авторизуйтеся.');
+                return;
+            }
+
+            const quantity = document.getElementById('quantity').value;
+            const cartItem = {
+                productId,
+                username,
+                quantity: parseInt(quantity),
+                price: 130.00,
+            };
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            console.log(`Додано ${quantity} одиниць товару до корзини.`);
+        }
+
+        function showCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length > 0) {
+                alert('Товари в корзині:\n' + cart.map(item => `${item.productId}: ${item.quantity} шт. * $${item.price.toFixed(2)}`).join('\n'));
+            } else {
+                alert('Корзина порожня.');
+            }
+        }
+    </script>
+</body>
+</html>

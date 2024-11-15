@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару</title>
+    <link rel="stylesheet" href="product_page.css">
+</head>
+<body>
+    <header>
+        <h1>RAY-BAN 9565S 212/80 DARK BLUE</h1>
+    </header>
+    <nav>
+        <a href="E:\Е\Веб\Магазин\main.html">Каталог</a>
+    </nav>
+    <main>
+        <div id="productDetails">
+            <img id="productImage" src="E:\Е\Веб\Магазин\img\glass5.jpg" alt="Товар">
+            <p>RAY-BAN 9565S 212/80 DARK BLUE — це сонцезахисні з металевою оправою у полірованому сріблястому кольорі. Лінзи — класичні сині. Регульовані носоупори забезпечують зручну посадку. </p>
+            <p>Лінзи в окулярах RAY-BAN забезпечують надійний захист очей від шкідливого сонячного випромінювання. З окулярами знаменитого бренду ваша дитина буде виглядати стильно і впевнено, ви ж можете бути спокійні за безпеку її прогулянок у сонячну погоду.</p>
+            <p>Ціна: $100.00</p>
+            
+            <label for="quantity">Кількість:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+
+            <button onclick="addToCart()">Додати у кошик</button>
+            <button onclick="showCart()">Показати корзину</button>
+        </div>
+    </main>
+
+    <script>
+        function addToCart() {
+            const productId = 'RAY-BAN 9565S 212/80 DARK BLUE';
+            const username = localStorage.getItem('userLogin');
+
+            if (!username) {
+                alert('Для додавання товару у кошик авторизуйтеся.');
+                return;
+            }
+
+            const quantity = document.getElementById('quantity').value;
+            const cartItem = {
+                productId,
+                username,
+                quantity: parseInt(quantity),
+                price: 100.00,
+            };
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            console.log(`Додано ${quantity} одиниць товару до корзини.`);
+        }
+
+        function showCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length > 0) {
+                alert('Товари в корзині:\n' + cart.map(item => `${item.productId}: ${item.quantity} шт. * $${item.price.toFixed(2)}`).join('\n'));
+            } else {
+                alert('Корзина порожня.');
+            }
+        }
+    </script>
+</body>
+</html>
